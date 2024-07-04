@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
+import Category from "./Components/Category";
+import FeatureSectionFruit from "./Components/FeatureSectionFruit";
 
 function App() {
   return (
@@ -8,6 +10,8 @@ function App() {
      <div>
       <Navbar />  
       <Hero />
+      <Category />
+      <FeatureSectionFruit />
      </div>
     </>
   );
