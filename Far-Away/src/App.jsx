@@ -33,7 +33,7 @@ function App() {
       <Form onAddItems={handleItem} />
       <PackingList
         items={items}
-        onDeleteItem={handeDelete}
+        onDeleteItem={handleDelete}
         onToggleItem={handleToggle}
         onClearList = {handleClearList}
       />
