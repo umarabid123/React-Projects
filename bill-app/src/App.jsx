@@ -31,6 +31,7 @@ function App() {
 
   function handleAddFriend(friend) {
     setFriends((friends) => [...friends, friend]);
+    setShowAddFriend(false)
   }
 
   return (
@@ -94,11 +95,11 @@ function FormAddFriend({ onAddFriend }) {
   const [name, setName] = useState("");
   const [image, setImage] = useState("https://i.pravatar.cc/48");
 
-  function handleSubmission() {
+  function handleSubmission(e) {
     e.preventDefault();
     if (!name || !image) return;
 
-    const id = crypto.randomUUID();
+    const id = crypto.randomUUID;
 
     const newFriend = {
       id,
@@ -108,6 +109,8 @@ function FormAddFriend({ onAddFriend }) {
     };
 
     onAddFriend(newFriend)
+
+
     setName("");
     setImage("https://i.pravatar.cc/48");
   }
