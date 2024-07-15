@@ -23,22 +23,22 @@ const initialFriends = [
 
 function App() {
   const [showAddFriend, setShowAddFriend] = useState(false);
-const [friends, setFriends] = useState(initialFriends)
+  const [friends, setFriends] = useState(initialFriends);
 
   function handleShowAddFriend() {
     setShowAddFriend(!showAddFriend);
   }
 
-  function handleAddFriend(friend){
-    setFriends(friends => ([...friends, friend]))
+  function handleAddFriend(friend) {
+    setFriends((friends) => [...friends, friend]);
   }
 
   return (
     <>
       <div className="app">
         <div className="sidebar">
-          <FriendList friends ={friends} />
-          {showAddFriend && <FormAddFriend onAddFriend ={handleAddFriend} />}
+          <FriendList friends={friends} />
+          {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
           <Button onClick={handleShowAddFriend}>
             {showAddFriend ? "Close" : "Add Friend"}
           </Button>
@@ -91,33 +91,34 @@ function Button({ children, onClick }) {
 }
 
 function FormAddFriend({ onAddFriend }) {
-  const [name, seName] = useState("");
-  const [image, setImage] = useState("");
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("https://i.pravatar.cc/48");
 
-  function handleSubmission(){
+  function handleSubmission() {
     e.preventDefault();
-    if(!name || !image) return;
+    if (!name || !image) return;
 
     const id = crypto.randomUUID();
 
     const newFriend = {
       id,
       name,
-      image:`${image}?=${id}`,
+      image: `${image}?=${id}`,
       balance: 0,
-    }
+    };
 
     onAddFriend(newFriend)
-
+    setName("");
+    setImage("https://i.pravatar.cc/48");
   }
 
   return (
-    <form className="form-add-friend"onSubmit={handleSubmission} >
+    <form className="form-add-friend" onSubmit={handleSubmission}>
       <label>👫Friend name</label>
       <input
         type="text"
         value={name}
-        onChange={(e) => seName(e.target.value)}
+        onChange={(e) => setName(e.target.value)}
       />
       <label>🌄 Image URL</label>
       <input type="text" onChange={(e) => setImage(e.target.value)} />
