@@ -238,7 +238,7 @@ export default function App() {
         <ListBox>
           <MoviesList movies={movies} />
         </ListBox>
-        <WatchedBox />
+        <WatcheBox />
       </Main>
     </>
   );
