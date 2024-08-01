@@ -6,6 +6,7 @@
   padding: 0px 20px;
   height: 60px;
   color: white;
+  z-index: 1 !important;
 }
 .navbar-logo {
   font-family: "Brush Script MT", cursive;
@@ -47,6 +48,10 @@
 }
 
 @media (max-width: 768px) {
+  .navbar{
+    display: flex;
+    justify-content: space-between;
+  }
   .nav-links {
     display: none;
   }
@@ -60,8 +65,27 @@
     background-color: #333;
     align-items: center;
     margin-bottom: 10px;
+    z-index: 1;
   }
+  
   .mobile-manu-icon{
     display: block;
+  }
+  .nav-links-mobile a{
+    color: white;
+    text-decoration: none;
+    padding: 10px 0px;
+    width: 100%;
+    text-align: center;
+  }
+  .nav-icon{
+    margin-bottom: 10px;
+
+  }
+  .nav-links-mobile a:hover{
+    background-color: #333;
+  }
+  .order-button{
+    margin-top: 10px;
   }
 }
