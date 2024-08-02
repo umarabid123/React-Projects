@@ -1,74 +1,94 @@
-.menu{
-    padding: 50px;
-    text-align: center;
-    background-color: #f8f8f8;
-
+.menu {
+  padding: 50px;
+  text-align: center;
+  background-color: #f8f8f8;
 }
-.menu h2{
-    font-family: 'Brush Script MT';
-    font-size: 48px;
-    margin-bottom: 30px;
+.menu h2 {
+  font-family: "Brush Script MT";
+  font-size: 48px;
+  margin-bottom: 30px;
 }
-.menu-categories{
-display: flex;
-justify-content: center;
-margin-bottom: 30px;
-overflow-x: scroll;
+.menu-categories {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  /* overflow-x: scroll; */
 }
-.menu-categories button{
-    background-color: transparent;
-    border: none;
-    font-size: 18px;
-    margin: 0 10px;
-    cursor: pointer;
-    color: #000;
-}
-
-.menu-categories button:active{
-    color: #ffa500;
-    font-weight: bold;
+.menu-categories button {
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  margin: 0 10px;
+  cursor: pointer;
+  color: #000;
+  outline: none;
 }
 
-.menu-items{
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(250px, 1fr));
-    gap: 20px;
+.menu-categories button:active {
+  color: #ffa500;
+  font-weight: bold;
 }
-.menu-card{
-    background-color: #1a1a1a;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px black;
-    color: white;
+
+.menu-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
 }
-.menu-card img{
+.menu-card {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px black;
+  color: white;
+}
+.menu-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+.menu-card-content {
+  padding: 20px;
+}
+.menu-card h3 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  font-family: "Brush Script MT";
+}
+.menu-card p {
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.menu-card-price {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 425px) {
+  
+  .menu {
+    padding: 38px;
+  }
+  .menu-card button{
     width: 100%;
-    height: 150px;
-    object-fit: cover;
-}
-.menu-card-content{
-    padding: 20px;
-}
-.menu-card h3{
-    font-size: 28px;
-    margin-bottom: 10px;
-    font-family: 'Brush Script MT';
-}
-.menu-card p{
-    font-size: 14px;
-    line-height: 1.8;
-    margin-bottom: 20px;
-}
-.menu-card-price{
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 10px;
-}
+  }
 
+}
+@media (max-width: 425px) {
+    .menu-categories button {
+        margin: 0 4px;
+    }
+  .menu {
+    padding: 38px;
+  }
+  .menu-card button{
+    width: 100%;
+  }
 
-@media (max-width:425px){
-   .menu-card-categories{
-    margin: 0 5px;
-   } 
-   .menu{padding: 38px;}
+}
+@media (max-width: 375px) {
+/* .menu-categories botton{
+    margin: 0 3px;
+} */
 }
