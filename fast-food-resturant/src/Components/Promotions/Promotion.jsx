@@ -15,7 +15,7 @@ const Promotion = () => {
         </div>
       </div>
       <div className="promotion-card">
-        <img src="/src/assets/images/f2.png" alt="Burger" />
+        <img src="/src/assets/images/f6.png" alt="Burger" />
         <div className="promotion-content">
           <div className="promotion-title">Tasty Thursdays</div>
           <div className="promoion-discount">20% off</div>
@@ -24,7 +24,7 @@ const Promotion = () => {
           </button>
         </div>
       </div>
-      <div className="promotion-card">
+      {/* <div className="promotion-card">
         <img src="/src/assets/images/f6.png" alt="Pizza" />
         <div className="promotion-content">
           <div className="promotion-title">Pizza Days</div>
@@ -33,7 +33,7 @@ const Promotion = () => {
             Order Now <FaShoppingCart />
           </button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

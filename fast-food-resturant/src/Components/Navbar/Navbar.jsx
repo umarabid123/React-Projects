@@ -24,8 +24,8 @@ const Navbar = () => {
         <FaSearch className="nav-icon"></FaSearch>
         <button className="order-button">Order Online</button>
       </div>
-      <div className="mobile-manu-icon" onClick={() => setIsMobile(!isMobile) }>
-        {isMobile? <FaTimes/> : <FaBars/>}
+      <div className="mobile-manu-icon" onClick={() => setIsMobile(!isMobile)}>
+        {isMobile ? <FaTimes /> : <FaBars />}
       </div>
     </nav>
   );
