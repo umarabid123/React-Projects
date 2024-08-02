@@ -1,4 +1,5 @@
 import './App.css'
+import Burger from './Components/Burger-2/Burger'
 import Header from './Components/Header/Header'
 import Menu from './Components/Menu/Menu'
 import Navbar from './Components/Navbar/Navbar'
@@ -13,8 +14,8 @@ function App() {
       <Header/>
       <Promotion />
       <Menu />
-      {/* <Burger2/>
-      <BookTable/>
+      <Burger/>
+      {/* <BookTable/>
       <TestimonialSlider/>
       <Foooter/> */}
     </div>
