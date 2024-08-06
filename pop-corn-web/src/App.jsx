@@ -1,4 +1,4 @@
-import { Children, useState } from "react";
+import { Children, useEffect, useState } from "react";
 import "./index.css";
 const tempMovieData = [
   {
@@ -224,15 +224,33 @@ function Movies({ movie }) {
   );
 }
 
-const Key = " 6d281dd9";
+const Key = "6d281dd9";
+
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
-  fetch(`http://www.omdbapi.com/?apikey=${Key}&s=interstellar`)
-    .then(res => res.json())
-    .then((data) => console.log(data.Search));
-    // console.log(data);
-    
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const query = "interstellar";
+  useEffect(function () {
+    async function fetchMovies() {
+      try {
+        setIsLoading(true);
+        const res = await fetch(
+          `http://www.omdbapi.com/?apikey=${Key}&s=${query}`
+        );
+        if (!res.ok) throw Error("Something went wrong");
+        const data = await res.json();
+        setMovies(data.Search);
+        setIsLoading(false);
+      } catch (err) {
+        setError(err);
+      }
+    }
+    fetchMovies();
+  }, []);
+  // console.log(data);
+
   return (
     <>
       <NavBar>
@@ -240,9 +258,7 @@ export default function App() {
         {/* <NumResult movies={movies} /> */}
       </NavBar>
       <Main>
-        <Box>
-          <MoviesList movies={movies} />
-        </Box>
+        <Box>{isLoading ? <Loader /> : <MoviesList movies={movies} />}</Box>
         <Box>
           <Summary watched={watched} />
           <WatchedMovies watched={watched} />
@@ -250,4 +266,8 @@ export default function App() {
       </Main>
     </>
   );
+}
+
+function Loader() {
+  return <p className="loader">Loading... </p>;
 }
