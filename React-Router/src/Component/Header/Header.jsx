@@ -64,7 +64,7 @@ function Header() {
                                     Contact US
                                 </NavLink>
                             </li>
-                            {/* <li>
+                            <li>
                                 <NavLink
                                 to="/github"
                                     className={({isActive}) =>
@@ -73,7 +73,7 @@ function Header() {
                                 >
                                     Github
                                 </NavLink>
-                            </li> */}
+                            </li>
                         </ul>
                     </div>
                 </div>

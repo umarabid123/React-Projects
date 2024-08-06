@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 function User() {
     const {userid} = useParams();
   return (
-    <div className='bg-gray-700 h-20 text-4xl font-semibold text-center text-white p-2'>
+    <div className='bg-gray-700 h-20 text-4xl font-semibold text-center text-white py-4'>
       User :{userid}
     </div>
   )
