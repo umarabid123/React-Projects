@@ -1,5 +1,5 @@
 import { Children, useState } from "react";
-import './index.css'
+import "./index.css";
 const tempMovieData = [
   {
     imdbID: "tt1375666",
@@ -110,7 +110,7 @@ function Main({ children }) {
 //       </button>
 //       {isOpen2 && (
 //         <>
-         
+
 //         </>
 //       )}
 //     </div>
@@ -197,8 +197,6 @@ function MoviesWatch({ movie }) {
   );
 }
 
-
-
 function MoviesList({ movies }) {
   return (
     <ul className="list">
@@ -226,25 +224,28 @@ function Movies({ movie }) {
   );
 }
 
-const Key = 'f84fc31d'
+const Key = " 6d281dd9";
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
-fetch(`http://www.omdbapi.com/?apikey=${Key}&s=intersteller`).then(res => res.json()).then((data) => console.log(data)
-);
+  fetch(`http://www.omdbapi.com/?apikey=${Key}&s=interstellar`)
+    .then(res => res.json())
+    .then((data) => console.log(data.Search));
+    // console.log(data);
+    
   return (
     <>
       <NavBar>
         <Search />
-        <NumResult movies={movies} />
+        {/* <NumResult movies={movies} /> */}
       </NavBar>
       <Main>
         <Box>
           <MoviesList movies={movies} />
         </Box>
         <Box>
-        <Summary watched={watched} />
-        <WatchedMovies watched={watched} />
+          <Summary watched={watched} />
+          <WatchedMovies watched={watched} />
         </Box>
       </Main>
     </>
