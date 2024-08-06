@@ -1,5 +1,5 @@
 import { Children, useState } from "react";
-
+import './index.css'
 const tempMovieData = [
   {
     imdbID: "tt1375666",
@@ -226,11 +226,12 @@ function Movies({ movie }) {
   );
 }
 
+const Key = 'f84fc31d'
 export default function App() {
-  const [movies, setMovies] = useState(tempMovieData);
-  const [watched, setWatched] = useState(tempWatchedData);
-
-
+  const [movies, setMovies] = useState([]);
+  const [watched, setWatched] = useState([]);
+fetch(`http://www.omdbapi.com/?apikey=${Key}&s=intersteller`).then(res => res.json()).then((data) => console.log(data)
+);
   return (
     <>
       <NavBar>
