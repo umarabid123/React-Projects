@@ -139,6 +139,7 @@ function NavBar({ children }) {
 
 function MovieDetails({ selectedId, onCloseMovie }) {
   const [movie, setMovie] = useState({});
+  const [ isLoading, setIsLoading] =useState()
 
   const {
     Title: title,
@@ -151,29 +152,49 @@ function MovieDetails({ selectedId, onCloseMovie }) {
     Actors: actors,
     Director: director,
     Genre: genre,
-  } = data;
-
+  } = movie;
+  console.log("movie", movie);
   useEffect(function () {
     async function getMovieDetail() {
+      setIsLoading(true)
       const res = await fetch(
         `http://www.omdbapi.com/?apikey=${Key}&i=${selectedId}`
       );
       const data = await res.json();
-      console.log(data);
-      
+      setMovie(data);
+      setIsLoading(false)
     }
     getMovieDetail();
-  }, []);
+  }, [selectedId]);
   return (
     <div className="details">
+     {isLoading? <Loader />: <>
       <header>
-        {" "}
         <button className="btn-back" onClick={() => onCloseMovie()}>
           &larr;
         </button>
         <img src={poster} alt={`Poster of ${movie}`} />
+        <div className="details-overview">
+          <h2>{title}</h2>
+          <p>
+            {relased}&bull; {runtime}
+          </p>
+          <p>
+            {genre}
+            <p>
+              <span>🌟</span> {imdbRating} IMDb Rating
+            </p>
+          </p>
+        </div>
       </header>
-      {selectedId}
+      <section>
+        <p>
+          <em>{plot}</em>
+        </p>
+        <p>Starring {actors}</p>
+        <p>Directed by {director}</p>
+      </section></>}
+      {/* {selectedId} */}
     </div>
   );
 }
