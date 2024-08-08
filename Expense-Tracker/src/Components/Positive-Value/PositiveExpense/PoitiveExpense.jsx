@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
-function PoitiveExpense({txt,Amount}) {
+function PoitiveExpense({ item, customProp, inputAmount }) {
   return (
-    <div className='bg-white w-full border-r-4 border-[#b6960a] flex justify-between items-center p-2 mt-4 hover:bg-[#b6960a] hover:text-white transition-all duration-700 cursor-pointer'>
-    <p className='text-lg'>{txt}</p>
-    <p className='text-lg'>${Amount}.00</p>
-     </div>
-  )
+    <div className={`bg-white w-full border-r-4 flex justify-between items-center p-2 mt-4  hover:text-white transition-all duration-700 cursor-pointer ${+item.amount > 0? "border-[#b6960a] hover:bg-[#b6960a] " :"border-[#2da3ad]  hover:bg-[#2da3ad]"} ${customProp}`}>
+      <p className="text-lg">{item.description}</p>
+      <p className="text-lg">${item.amount}</p>
+    </div>
+  );
 }
 
-export default PoitiveExpense
+export default PoitiveExpense;

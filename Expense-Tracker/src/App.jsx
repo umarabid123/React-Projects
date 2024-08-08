@@ -16,18 +16,29 @@ function App() {
   const [currentBalance, setCurrentBalance] = useState(null);
   const [income, setIncome] = useState("");
   const [expense, setExpense] = useState("");
+  const [itemMap, setItemMap] = useState([]);
 
   function handleInput() {
     if (inputAmount > 0) {
       setAddItem(inputDescription);
       setAddAmount(inputAmount);
       setIncome(+income + +inputAmount);
-      setCurrentBalance(+currentBalance + +inputAmount)
+      setCurrentBalance(+inputAmount + +currentBalance);
     } else {
       setAddItemNag(inputDescription);
       setExpense(+expense + +inputAmount);
       setAddAmountNag(inputAmount);
-      setCurrentBalance(+currentBalance - -inputAmount)
+      setCurrentBalance(+currentBalance - -inputAmount);
+    }
+    setItemMap([
+      ...itemMap,
+      { amount: +inputAmount, description: inputDescription },
+    ]);
+  }
+
+  function handleMapItem() {
+    if (inputAmount > 0) {
+      setItemMap([...item]);
     }
   }
 
@@ -59,8 +70,9 @@ function App() {
             Transaction History
           </h1>
           <div className="hr border-b-[1px] border-gray-400"></div>
-          <PoitiveExpense txt={addItem} Amount={addAmount} />
-          <NagetiveExpense nagTxt={addItemNag} nagAmount={addAmountNag} />
+          {itemMap.map((item, index) => (
+            <PoitiveExpense item={item} key={index} customProp={inputAmount > 0? "border-[#b6960a] hover:bg-[#b6960a] " :"border-[#2da3ad]  hover:bg-[#2da3ad]"} />
+          ))}
         </div>
         <div className="new-transaction">
           <h1 className="text-center text-xl font-mono pb-2 font-bold mt-6">
@@ -78,6 +90,7 @@ function App() {
               onChange={(e) => setInputDescription(e.target.value)}
             />
           </div>
+
           <div className="Input mt-6">
             <label className="font-bold text-md">Amount of transaction</label>
             <input
@@ -87,6 +100,7 @@ function App() {
               onChange={(e) => setInputAmount(e.target.value)}
             />
           </div>
+
           {/* <Input
             text={"Transaction Amount"}
             placeholder={"Dollar Value of Transaction"}
