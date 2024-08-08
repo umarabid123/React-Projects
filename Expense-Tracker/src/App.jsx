@@ -7,6 +7,30 @@ import NagetiveExpense from "./Components/Positive-Value/Nagetive-value/Nagetive
 import Input from "./Components/Positive-Value/Input/Input";
 
 function App() {
+  const [addItem, setAddItem] = useState(false);
+  const [addItemNag, setAddItemNag] = useState(false);
+  const [addAmount, setAddAmount] = useState(null);
+  const [addAmountNag, setAddAmountNag] = useState(null);
+  const [inputDescription, setInputDescription] = useState(null);
+  const [inputAmount, setInputAmount] = useState(null);
+  const [currentBalance, setCurrentBalance] = useState(null);
+  const [income, setIncome] = useState("");
+  const [expense, setExpense] = useState("");
+
+  function handleInput() {
+    if (inputAmount > 0) {
+      setAddItem(inputDescription);
+      setAddAmount(inputAmount);
+      setIncome(+income + +inputAmount);
+      setCurrentBalance(+currentBalance + +inputAmount)
+    } else {
+      setAddItemNag(inputDescription);
+      setExpense(+expense + +inputAmount);
+      setAddAmountNag(inputAmount);
+      setCurrentBalance(+currentBalance - -inputAmount)
+    }
+  }
+
   return (
     <>
       <div className="app h-full p-4 sm:w-[60%] xl:w-[30%] mx-auto">
@@ -14,19 +38,19 @@ function App() {
           Expense Tracker By Umar
         </h1>
         <h5 className="text-center font-medium">CURRENT BALANCE</h5>
-        <h2 className="text-center font-bold text-3xl">$4500.00</h2>
+        <h2 className="text-center font-bold text-3xl">${currentBalance}</h2>
         <div className="display bg-white w-[100%] mx-auto p-6 flex justify-between items-center gap-3 mt-6 shadow-xl">
           <div className="income w-1/2">
             <h2 className="text-2xl font-medium text-center">Income</h2>
             <h2 className="text-2xl font-medium text-center text-[#b6960a]">
-              5000.00
+              ${income}
             </h2>
           </div>
           <div className="hr border-[1px] border-gray-300 h-12"></div>
           <div className="expenses w-1/2">
             <h2 className="text-2xl font-medium text-center">Expense</h2>
             <h2 className="text-2xl font-medium text-center text-[#2da3ad]">
-              500.00
+              ${expense}
             </h2>
           </div>
         </div>
@@ -35,17 +59,45 @@ function App() {
             Transaction History
           </h1>
           <div className="hr border-b-[1px] border-gray-400"></div>
-          <PoitiveExpense />
-          <NagetiveExpense />
+          <PoitiveExpense txt={addItem} Amount={addAmount} />
+          <NagetiveExpense nagTxt={addItemNag} nagAmount={addAmountNag} />
         </div>
         <div className="new-transaction">
           <h1 className="text-center text-xl font-mono pb-2 font-bold mt-6">
             Add New Transaction
           </h1>
           <div className="hr border-b-[1px] border-gray-400"></div>
-          <Input text={"Description"} placeholder={"Details of transaction"} type={"text"} />
-          <Input text={"Transaction Amount"} placeholder={"Dollar Value of Transaction"} type={"number"} />
-          <button className="w-full text-white font-semibold p-2 rounded-sm opacity-65 mt-3 text-center text-xl bg-blue-500">Add Transaction</button>
+          {/* <Input text={addItem} placeholder={"Details of transaction"} type={"text"} onChange={"(e) => console(e.target.value)"}/> */}
+
+          <div className="Input mt-6">
+            <label className="font-bold text-md">Description</label>
+            <input
+              type="text"
+              placeholder="Details"
+              className="w-full border-[1px] border-gray-300 p-2 mt-1 rounded-sm outline-black"
+              onChange={(e) => setInputDescription(e.target.value)}
+            />
+          </div>
+          <div className="Input mt-6">
+            <label className="font-bold text-md">Amount of transaction</label>
+            <input
+              type="number"
+              placeholder="Details of Amount"
+              className="w-full border-[1px] border-gray-300 p-2 mt-1 rounded-sm outline-black"
+              onChange={(e) => setInputAmount(e.target.value)}
+            />
+          </div>
+          {/* <Input
+            text={"Transaction Amount"}
+            placeholder={"Dollar Value of Transaction"}
+            type={"number"}
+          /> */}
+          <button
+            className="w-full text-white font-semibold p-2 rounded-sm opacity-65 mt-3 text-center text-xl bg-blue-500"
+            onClick={handleInput}
+          >
+            Add Transaction
+          </button>
         </div>
       </div>
     </>
