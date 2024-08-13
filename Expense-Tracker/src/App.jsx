@@ -71,7 +71,7 @@ function App() {
           </h1>
           <div className="hr border-b-[1px] border-gray-400"></div>
           {itemMap.map((item, index) => (
-            <PoitiveExpense item={item} key={index} customProp={inputAmount > 0? "border-[#b6960a] hover:bg-[#b6960a] " :"border-[#2da3ad]  hover:bg-[#2da3ad]"} />
+            <PoitiveExpense item={item} key={index} inputAmount ={inputAmount} />
           ))}
         </div>
         <div className="new-transaction">
