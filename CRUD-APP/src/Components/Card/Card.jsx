@@ -8,21 +8,21 @@ export const EmployeeData = [
     age: 21,
   },
   {
-    id: 1,
+    id: 2,
     firstName: "Muhammad",
-    lastName: "Umar",
+    lastName: "Ali",
     age: 21,
   },
   {
-    id: 1,
+    id: 3,
     firstName: "Muhammad",
-    lastName: "Umar",
+    lastName: "Ahmad",
     age: 21,
   },
   {
-    id: 1,
+    id: 4,
     firstName: "Muhammad",
-    lastName: "Umar",
+    lastName: "Ammar",
     age: 21,
   },
 ];

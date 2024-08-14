@@ -1,6 +1,7 @@
 
 import './App.css'
 import Hero from './Components/Hero/Hero,'
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
 
