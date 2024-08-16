@@ -9,7 +9,7 @@ function App() {
   const [age, setAge] = useState(null);
   const [id, setId] = useState(1);
 
-  function hendleAdd(event) {
+  function hendleAdd() {
     setId(id + 1);
     if (firstName.length > 0 && lastName.length > 0 && age.length > 0) {
       setData([
@@ -19,6 +19,16 @@ function App() {
       setFirstName("");
       setLastName("");
       setAge("");
+    }
+  }
+
+  function hendleEdit(id) {
+    const dt = data.filter((item) => item.id == id);
+    if(dt !== undefined){
+      setId(id)
+      setFirstName(dt[0].firstName)
+      setLastName(dt[0].lastName)
+      setAge(dt[0].age)
     }
   }
   function hendleDelete(id) {
@@ -41,9 +51,9 @@ function App() {
           setLastName={setLastName}
           setAge={setAge}
           hendleAdd={hendleAdd}
-         firstName={firstName}
-         lastName={lastName}
-         age={age}
+          firstName={firstName}
+          lastName={lastName}
+          age={age}
         />
         <div className="border-b px-6 bg-white">
           <table className="max-w-[100%] w-full mx-auto">
@@ -75,7 +85,10 @@ function App() {
             <tbody className="">
               {data.map((item, i) => {
                 return (
-                  <tr key={i} className="flex justify-between items-center hover:text-sky-500 hover:bg-slate-100 ">
+                  <tr
+                    key={i}
+                    className="flex justify-between items-center hover:text-sky-500 hover:bg-slate-100 "
+                  >
                     <td className="text-xl h-12 w-[20%] text-center">
                       {i + 1}
                     </td>
@@ -89,7 +102,7 @@ function App() {
                       {item.age}
                     </td>
                     <div className="btn w-[20%] ">
-                      <button className="bg-sky-500 text-white p-2  w-24 rounded-lg transition-all duration-500 text-xl m-2">
+                      <button className="bg-sky-500 text-white p-2  w-24 rounded-lg transition-all duration-500 text-xl m-2" onClick={() => hendleEdit(id)}>
                         Edit
                       </button>
                       <button
