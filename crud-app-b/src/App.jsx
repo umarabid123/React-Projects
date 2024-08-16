@@ -9,16 +9,16 @@ function App() {
   const [age, setAge] = useState(null);
   const [id, setId] = useState(1);
 
-  function hendleAdd() {
+  function hendleAdd(event) {
     setId(id + 1);
     if (firstName.length > 0 && lastName.length > 0 && age.length > 0) {
       setData([
         ...data,
         { firstName: firstName, lastName: lastName, age: age, id: id },
       ]);
-      setFirstName(" ");
-      setLastName(" ");
-      setAge(" ");
+      setFirstName("");
+      setLastName("");
+      setAge("");
     }
   }
   function hendleDelete(id) {
@@ -41,6 +41,9 @@ function App() {
           setLastName={setLastName}
           setAge={setAge}
           hendleAdd={hendleAdd}
+         firstName={firstName}
+         lastName={lastName}
+         age={age}
         />
         <div className="border-b px-6 bg-white">
           <table className="max-w-[100%] w-full mx-auto">
