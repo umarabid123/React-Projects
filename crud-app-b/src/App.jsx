@@ -22,15 +22,15 @@ function App() {
     }
   }
 
-  function hendleEdit(id) {
-    const dt = data.filter((item) => item.id == id);
-    if(dt !== undefined){
-      setId(id)
-      setFirstName(dt[0].firstName)
-      setLastName(dt[0].lastName)
-      setAge(dt[0].age)
-    }
-  }
+  // function hendleEdit(id) {
+  //   const dt = data.filter((item) => item.id == id);
+  //   if (dt !== undefined) {
+  //     setId(id);
+  //     setFirstName(dt[0].firstName);
+  //     setLastName(dt[0].lastName);
+  //     setAge(dt[0].age);
+  //   }
+  // }
   function hendleDelete(id) {
     const temp = data.filter((item) => item.id !== id);
     if (id > 0) {
@@ -38,6 +38,14 @@ function App() {
     }
     console.log("delete");
     console.log(id);
+  }
+  function hendleClear(id) {
+    if (firstName.length > 0 && lastName.length > 0 && age.length > 0) {
+      setFirstName("");
+      setLastName("");
+      setAge("");
+    }
+    console.log('Clear');
   }
 
   return (
@@ -54,6 +62,8 @@ function App() {
           firstName={firstName}
           lastName={lastName}
           age={age}
+          hendleClear={hendleClear}
+          id={id}
         />
         <div className="border-b px-6 bg-white">
           <table className="max-w-[100%] w-full mx-auto">
@@ -102,7 +112,10 @@ function App() {
                       {item.age}
                     </td>
                     <div className="btn w-[20%] ">
-                      <button className="bg-sky-500 text-white p-2  w-24 rounded-lg transition-all duration-500 text-xl m-2" onClick={() => hendleEdit(id)}>
+                      <button
+                        className="bg-sky-500 text-white p-2  w-24 rounded-lg transition-all duration-500 text-xl m-2 "
+                        onClick={() => hendleEdit(id)}
+                      >
                         Edit
                       </button>
                       <button

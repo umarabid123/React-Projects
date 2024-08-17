@@ -1,10 +1,9 @@
 import React from "react";
 
-function Header({ setFirstName, setAge, setLastName, hendleAdd, firstName, lastName, age }) {
+function Header({ setFirstName, setAge, setLastName, hendleAdd, firstName, lastName, age,hendleClear,id }) {
   return (
     <div className="bg-white p-4">
       <div className="headerInput flex items-center justify-center gap-6">
-        {" "}
         <form action="">
           <label className="text-xl font-medium font-sans text-sky-500">
             First Name:
@@ -44,7 +43,7 @@ function Header({ setFirstName, setAge, setLastName, hendleAdd, firstName, lastN
         >
           Add
         </button> 
-        <button className="bg-red-500 text-white p-2 w-24 rounded-lg hover:bg-white hover:text-red-500 hover:border hover:border-red-500 transition-all duration-500 text-xl">
+        <button className="bg-red-500 text-white p-2 w-24 rounded-lg hover:bg-white hover:text-red-500 hover:border hover:border-red-500 transition-all duration-500 text-xl" onClick={() => hendleClear(id)}>
           Clear
         </button>
       </div>
