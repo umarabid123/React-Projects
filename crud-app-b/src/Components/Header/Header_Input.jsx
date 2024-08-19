@@ -1,6 +1,6 @@
 import React from "react";
 
-function Header({ setFirstName, setAge, setLastName, hendleAdd, firstName, lastName, age,hendleClear,id }) {
+function Header({ setFirstName, setAge, setLastName, hendleAdd, firstName, lastName, age,hendleClear,id , editIndex,handleEditValue}) {
   return (
     <div className="bg-white p-4">
       <div className="headerInput flex items-center justify-center gap-6">
@@ -39,9 +39,9 @@ function Header({ setFirstName, setAge, setLastName, hendleAdd, firstName, lastN
         </form>
         <button
           className="bg-sky-500 text-white p-2 w-24 rounded-lg hover:bg-white hover:border hover:text-sky-500 hover:border-sky-500 transition-all duration-500 text-xl"
-          onClick={hendleAdd}
+          onClick={editIndex !==null? handleEditValue:hendleAdd}
         >
-          Add
+          { editIndex !==null? "Update":"Add"}
         </button> 
         <button className="bg-red-500 text-white p-2 w-24 rounded-lg hover:bg-white hover:text-red-500 hover:border hover:border-red-500 transition-all duration-500 text-xl" onClick={() => hendleClear(id)}>
           Clear

@@ -8,9 +8,10 @@ function App() {
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState(null);
   const [id, setId] = useState(1);
+  const [editIndex, setEditIndex] = useState(null);
 
   function hendleAdd() {
-    setId(id + 1);
+    setId(id);
     if (firstName.length > 0 && lastName.length > 0 && age.length > 0) {
       setData([
         ...data,
@@ -33,11 +34,11 @@ function App() {
   // }
   function hendleDelete(id) {
     const temp = data.filter((item) => item.id !== id);
-    if (id > 0) {
+    if (id>0 ) {
       setData(temp);
+      console.log(id);
+      
     }
-    console.log("delete");
-    console.log(id);
   }
   function hendleClear(id) {
     if (firstName.length > 0 && lastName.length > 0 && age.length > 0) {
@@ -46,6 +47,22 @@ function App() {
       setAge("");
     }
     console.log('Clear');
+  }
+  function handleEdit(edit_item, edit_ind){
+    setFirstName(edit_item.firstName)
+    setLastName(edit_item.lastName)
+    setAge(edit_item.age)
+    setEditIndex(edit_ind)
+  }
+  function handleEditValue(){
+    const temp = [...data];
+    temp[editIndex] = {firstName:firstName, lastName:lastName, age:age};
+    setData(temp);
+    setEditIndex(null)
+    setFirstName("")
+    setLastName("")
+    setAge("")
+    console.log(id);
   }
 
   return (
@@ -64,6 +81,8 @@ function App() {
           age={age}
           hendleClear={hendleClear}
           id={id}
+          editIndex = {editIndex}
+          handleEditValue ={handleEditValue}
         />
         <div className="border-b px-6 bg-white">
           <table className="max-w-[100%] w-full mx-auto">
@@ -114,7 +133,7 @@ function App() {
                     <div className="btn w-[20%] ">
                       <button
                         className="bg-sky-500 text-white p-2  w-24 rounded-lg transition-all duration-500 text-xl m-2 "
-                        onClick={() => hendleEdit(id)}
+                        onClick={() => handleEdit(item,i)}
                       >
                         Edit
                       </button>
