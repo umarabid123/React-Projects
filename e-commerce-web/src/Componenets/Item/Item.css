@@ -1,5 +1,6 @@
 .item{
-    width: 23%;
+    max-width: 250px;
+    margin: 50px;
 }
 .item p{
     margin: 6px 0px;
