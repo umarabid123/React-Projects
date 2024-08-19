@@ -19,7 +19,8 @@ function App() {
   const [itemMap, setItemMap] = useState([]);
 
   function handleInput() {
-    if (inputAmount > 0) {
+   if(inputAmount.length > 0 && inputDescription.length > 0){
+    if (inputAmount > 0 ) {
       setAddItem(inputDescription);
       setAddAmount(inputAmount);
       setIncome(+income + +inputAmount);
@@ -30,23 +31,34 @@ function App() {
       setAddAmountNag(inputAmount);
       setCurrentBalance(+currentBalance - -inputAmount);
     }
+   }
     setItemMap([
       ...itemMap,
       { amount: +inputAmount, description: inputDescription },
     ]);
+    setInputAmount("");
+    setInputDescription("");
   }
 
-  function handleMapItem() {
-    if (inputAmount > 0) {
-      setItemMap([...item]);
-    }
-  }
+  // function handleMapItem() {
+  //   if (inputAmount > 0) {
+  //     setItemMap([...item]);
+  //   }
+  // }
+function hendleDelete(index){
+  console.log(`index: ${index}`);
+  
+  const temp = itemMap.filter((item,i) => i !== index);
+  setItemMap(temp)
+  console.log('Delete');
+  
+}
 
   return (
     <>
       <div className="app h-full p-4 sm:w-[60%] xl:w-[30%] mx-auto">
         <h1 className="text-center text-xl lg:text-2xl font-mono font-bold lg:font-semibold mb-1">
-          Expense Tracker By Umar
+          Expense Tracker
         </h1>
         <h5 className="text-center font-medium">CURRENT BALANCE</h5>
         <h2 className="text-center font-bold text-3xl">${currentBalance}</h2>
@@ -71,7 +83,7 @@ function App() {
           </h1>
           <div className="hr border-b-[1px] border-gray-400"></div>
           {itemMap.map((item, index) => (
-            <PoitiveExpense item={item} key={index} inputAmount ={inputAmount} />
+            <PoitiveExpense item={item} key={index} inputAmount ={inputAmount} index ={index} hendleDelete ={hendleDelete} />
           ))}
         </div>
         <div className="new-transaction">
@@ -85,9 +97,11 @@ function App() {
             <label className="font-bold text-md">Description</label>
             <input
               type="text"
-              placeholder="Details"
               className="w-full border-[1px] border-gray-300 p-2 mt-1 rounded-sm outline-black"
               onChange={(e) => setInputDescription(e.target.value)}
+              value={inputDescription}
+              placeholder=" Detail of Description"
+            
             />
           </div>
 
@@ -98,6 +112,8 @@ function App() {
               placeholder="Details of Amount"
               className="w-full border-[1px] border-gray-300 p-2 mt-1 rounded-sm outline-black"
               onChange={(e) => setInputAmount(e.target.value)}
+              value={inputAmount}
+             
             />
           </div>
 

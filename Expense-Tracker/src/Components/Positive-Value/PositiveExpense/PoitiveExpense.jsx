@@ -1,6 +1,9 @@
 import React from "react";
+import { ImCross } from "react-icons/im";
 
-function PoitiveExpense({ item }) {
+function PoitiveExpense({ item, hendleDelete, index}) {
+
+
   return (
     <>
       <div className="flex flex-row-reverse items-center group relative">
@@ -14,7 +17,7 @@ function PoitiveExpense({ item }) {
           <p className="text-lg">{item.description}</p>
           <p className="text-lg">${item.amount}</p>
         </div>
-        <p className="bg-black p-2 text-white h-10 hidden group-hover:block absolute -left-12">cross</p>
+       <div className="icon bg-gray-900 py-2 px-3 text-white h-9 hidden group-hover:block absolute -left-10 top-5"><ImCross onClick={() =>hendleDelete(index)} /></div>
       </div>
     </>
   );
