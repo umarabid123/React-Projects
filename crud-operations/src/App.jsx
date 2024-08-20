@@ -35,6 +35,45 @@ function App() {
       setDataItem(temp);
     }
   }
+  function handleAdd() {
+    // const temp = [...dataItem, obj];
+    setDataItem([
+      ...dataItem,
+      {
+        id: id,
+        name: name,
+        username: username,
+        email: email,
+       address:{ street: street,
+        suite: suite,
+        city: city,
+        zipCode: zipCode
+        ,geo:{lat: lat,
+          lng: lng,}},
+        phoneNumber: phoneNumber,
+        website: website,
+        company:{companyName: companyName,
+        companyCatch: companyCatch,
+        companyBs: companyBs}
+      },
+    ]);
+    setId("");
+    setName("");
+    setUserName("");
+    setEmail("");
+    setStreet("");
+    setsuite("");
+    setCity("");
+    setZipCode("");
+    setLat("");
+    setLng("");
+    setPhoneNumber("");
+    setWebsite("");
+    setCompanyName("");
+    setCompanyCatch("");
+    setCompanyBs("");
+
+  }
 
   function handleEdit(
     i,
@@ -52,7 +91,7 @@ function App() {
     website,
     companyName,
     companyCatch,
-    companyBs
+    Bs
   ) {
     setId(id);
     setName(name);
@@ -68,13 +107,28 @@ function App() {
     setWebsite(website);
     setCompanyName(companyName);
     setCompanyCatch(companyCatch);
-    setCompanyBs(companyBs);
+    setCompanyBs(Bs);
     setIndexNumber(i);
   }
   function handleEditValue() {
     const temp = [...dataItem];
-    temp[indexNumber] ={id:id, name:name, username:username, email:email, street:street, suite:suite, city:city,zipCode:zipCode,lat:lat, lng:lng, phoneNumber:phoneNumber, website:website,companyName:companyName, companyCatch: companyCatch, companyBs:companyBs
-    }
+    temp[indexNumber] =  {
+      id: id,
+      name: name,
+      username: username,
+      email: email,
+     address:{ street: street,
+      suite: suite,
+      city: city,
+      zipCode: zipCode
+      ,geo:{lat: lat,
+        lng: lng,}},
+      phoneNumber: phoneNumber,
+      website: website,
+      company:{companyName: companyName,
+      companyCatch: companyCatch,
+      companyBs: companyBs,}
+    },
     setDataItem(temp);
     setId("");
     setName("");
@@ -91,9 +145,10 @@ function App() {
     setCompanyName("");
     setCompanyCatch("");
     setCompanyBs("");
-    setIndexNumber(null)
+    setIndexNumber(null);
+    console.log(dataItem);
   }
-    
+
   return (
     <>
       <div className="app">
@@ -116,8 +171,8 @@ function App() {
           companyName={companyName}
           companyCatch={companyCatch}
           companyBs={companyBs}
-          handleEditValue ={handleEditValue}
-          indexNumber ={indexNumber}
+          handleEditValue={handleEditValue}
+          indexNumber={indexNumber}
           setId={setId}
           setName={setName}
           setUserName={setUserName}
@@ -133,7 +188,7 @@ function App() {
           setCompanyName={setCompanyName}
           setCompanyCatch={setCompanyCatch}
           setCompanyBs={setCompanyBs}
-
+          handleAdd={handleAdd}
         />
         <div className="flex justify-between flex-wrap p-4">
           {dataItem.map((item, i) => (

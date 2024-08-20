@@ -1,3 +1,14 @@
 onChange={() => setId(e.target.value)}
 onChange={() => setName(e.target.value)}
 onChange={() => setUserName(e.target.value)}
+onChange={() => setEmail(e.target.value)}
+setStreet(e.target.value)} class
+setSuite(e.target.value)} classN
+setCity(e.target.value)} classNa
+setZipCode(e.target.value)} clas
+setLat(e.target.value)} classNam
+setLng(e.target.value)} classNam
+setPhoneNumber(e.target.value)} 
+setWebsite(e.target.value)} clas
+setCompanyName(e.target.value)} 
+setCompanyCatch(e.target.value)}
