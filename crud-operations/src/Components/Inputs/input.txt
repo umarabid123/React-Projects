@@ -1,0 +1,3 @@
+onChange={() => setId(e.target.value)}
+onChange={() => setName(e.target.value)}
+onChange={() => setUserName(e.target.value)}
