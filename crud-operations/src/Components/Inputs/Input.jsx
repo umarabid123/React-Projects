@@ -8,14 +8,14 @@ const Input = ({
   street,
   suite,
   city,
-  zipCode,
+  zipcode,
   lat,
   lng,
-  phoneNumber,
+  phone,
   website,
   companyName,
-  companyCatch,
-  companyBs,
+  catchPhrase,
+  bs,
   handleEditValue,
   indexNumber,
   setId,
@@ -28,11 +28,11 @@ const Input = ({
   setZipCode,
   setLat,
   setLng,
-  setPhoneNumber,
+  setPhone,
   setWebsite,
   setCompanyName,
-  setCompanyCatch,
-  setCompanyBs,
+  setCatchPhrase,
+  setBs,
   handleAdd
 }) => {
   return (
@@ -95,7 +95,7 @@ const Input = ({
         />
         <input
           type="text"
-          value={zipCode}
+          value={zipcode}
           onChange ={(e) => setZipCode(e.target.value)}
           className="w-[19%] p-2 border my-2"
           placeholder="Enter your Zip Code"
@@ -120,8 +120,8 @@ const Input = ({
         />
         <input
           type="text"
-          value={phoneNumber}
-          onChange ={(e) => setPhoneNumber(e.target.value) }
+          value={phone}
+          onChange ={(e) => setPhone(e.target.value) }
           className="w-[19%] p-2 border my-2"
           placeholder="Enter your Phone"
           
@@ -144,16 +144,16 @@ const Input = ({
         />
         <input
           type="text"
-          value={companyCatch}
-          onChange ={(e) => setCompanyCatch(e.target.value) }
+          value={catchPhrase}
+          onChange ={(e) => setCatchPhrase(e.target.value) }
           className="w-[19%] p-2 border my-2"
           placeholder="Enter your Comapny catch Phrase"
           
         />
         <input
           type="text"
-          value={companyBs}
-          onChange ={(e) => setCompanyBs(e.target.value) }
+          value={bs}
+          onChange ={(e) => setBs(e.target.value) }
           className="w-[19%] p-2 border my-2"
           placeholder="Enter your Bs"
           

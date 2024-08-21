@@ -12,14 +12,14 @@ function App() {
   const [street, setStreet] = useState("");
   const [suite, setsuite] = useState("");
   const [city, setCity] = useState("");
-  const [zipCode, setZipCode] = useState("");
+  const [zipcode, setZipCode] = useState("");
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phone, setPhone] = useState("");
   const [website, setWebsite] = useState("");
   const [companyName, setCompanyName] = useState("");
-  const [companyCatch, setCompanyCatch] = useState("");
-  const [companyBs, setCompanyBs] = useState("");
+  const [catchPhrase, setCatchPhrasw] = useState("");
+  const [bs, setBs] = useState("");
   const [indexNumber, setIndexNumber] = useState(null);
 
   useEffect(() => {
@@ -44,17 +44,20 @@ function App() {
         name: name,
         username: username,
         email: email,
-       address:{ street: street,
-        suite: suite,
-        city: city,
-        zipCode: zipCode
-        ,geo:{lat: lat,
-          lng: lng,}},
-        phoneNumber: phoneNumber,
+        address: {
+          street: street,
+          suite: suite,
+          city: city,
+          zipcode: zipcode,
+          geo: { lat: lat, lng: lng },
+        },
+        phone: phone,
         website: website,
-        company:{companyName: companyName,
-        companyCatch: companyCatch,
-        companyBs: companyBs}
+        company: {
+          companyName: companyName,
+          catchPhrase: catchPhrase,
+          bs: bs,
+        },
       },
     ]);
     setId("");
@@ -67,12 +70,11 @@ function App() {
     setZipCode("");
     setLat("");
     setLng("");
-    setPhoneNumber("");
+    setPhone("");
     setWebsite("");
     setCompanyName("");
-    setCompanyCatch("");
-    setCompanyBs("");
-
+    setCatchPhrasw("");
+    setBs("");
   }
 
   function handleEdit(
@@ -90,8 +92,8 @@ function App() {
     phone,
     website,
     companyName,
-    companyCatch,
-    Bs
+    catchPhrase,
+    bs
   ) {
     setId(id);
     setName(name);
@@ -103,35 +105,38 @@ function App() {
     setZipCode(zipcode);
     setLat(lat);
     setLng(lng);
-    setPhoneNumber(phone);
+    setPhone(phone);
     setWebsite(website);
     setCompanyName(companyName);
-    setCompanyCatch(companyCatch);
-    setCompanyBs(Bs);
-    console.log('companyBs: ', companyBs);
-    
+    setCatchPhrasw(catchPhrase);
+    setBs(bs);
+    console.log("bs: ", bs);
+
     setIndexNumber(i);
   }
   function handleEditValue() {
     const temp = [...dataItem];
-    temp[indexNumber] =  {
+    (temp[indexNumber] = {
       id: id,
       name: name,
       username: username,
       email: email,
-     address:{ street: street,
-      suite: suite,
-      city: city,
-      zipCode: zipCode
-      ,geo:{lat: lat,
-        lng: lng,}},
-      phoneNumber: phoneNumber,
+      address: {
+        street: street,
+        suite: suite,
+        city: city,
+        zipcode: zipcode,
+        geo: { lat: lat, lng: lng },
+      },
+      phone: phone,
       website: website,
-      company:{companyName: companyName,
-      companyCatch: companyCatch,
-      companyBs: companyBs,}
-    },
-    setDataItem(temp);
+      company: {
+        companyName: companyName,
+        catchPhrase: catchPhrase,
+        bs: bs,
+      },
+    }),
+      setDataItem(temp);
     setId("");
     setName("");
     setUserName("");
@@ -142,11 +147,11 @@ function App() {
     setZipCode("");
     setLat("");
     setLng("");
-    setPhoneNumber("");
+    setPhone("");
     setWebsite("");
     setCompanyName("");
-    setCompanyCatch("");
-    setCompanyBs("");
+    setCatchPhrasw("");
+    setBs("");
     setIndexNumber(null);
     console.log(dataItem);
   }
@@ -165,14 +170,14 @@ function App() {
           street={street}
           suite={suite}
           city={city}
-          zipCode={zipCode}
+          zipcode={zipcode}
           lat={lat}
           lng={lng}
-          phoneNumber={phoneNumber}
+          phone={phone}
           website={website}
           companyName={companyName}
-          companyCatch={companyCatch}
-          companyBs={companyBs}
+          catchPhrase={catchPhrase}
+          bs={bs}
           handleEditValue={handleEditValue}
           indexNumber={indexNumber}
           setId={setId}
@@ -185,11 +190,11 @@ function App() {
           setZipCode={setZipCode}
           setLat={setLat}
           setLng={setLng}
-          setPhoneNumber={setPhoneNumber}
+          setPhone={setPhone}
           setWebsite={setWebsite}
           setCompanyName={setCompanyName}
-          setCompanyCatch={setCompanyCatch}
-          setCompanyBs={setCompanyBs}
+          setCatchPhrasw={setCatchPhrasw}
+          setBs={setBs}
           handleAdd={handleAdd}
         />
         <div className="flex justify-between flex-wrap p-4">
