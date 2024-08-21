@@ -18,7 +18,7 @@ function App() {
   const [phone, setPhone] = useState("");
   const [website, setWebsite] = useState("");
   const [companyName, setCompanyName] = useState("");
-  const [catchPhrase, setCatchPhrasw] = useState("");
+  const [catchPhrase, setCatchPhrase] = useState("");
   const [bs, setBs] = useState("");
   const [indexNumber, setIndexNumber] = useState(null);
 
@@ -54,12 +54,14 @@ function App() {
         phone: phone,
         website: website,
         company: {
-          companyName: companyName,
+          name: name,
           catchPhrase: catchPhrase,
           bs: bs,
         },
       },
     ]);
+    // console.log('CompanyName: ', companyName);
+    
     setId("");
     setName("");
     setUserName("");
@@ -73,7 +75,7 @@ function App() {
     setPhone("");
     setWebsite("");
     setCompanyName("");
-    setCatchPhrasw("");
+    setCatchPhrase("");
     setBs("");
   }
 
@@ -91,7 +93,7 @@ function App() {
     lng,
     phone,
     website,
-    companyName,
+    Name,
     catchPhrase,
     bs
   ) {
@@ -107,12 +109,13 @@ function App() {
     setLng(lng);
     setPhone(phone);
     setWebsite(website);
-    setCompanyName(companyName);
-    setCatchPhrasw(catchPhrase);
+    setCompanyName(Name);
+    setCatchPhrase(catchPhrase);
     setBs(bs);
-    console.log("bs: ", bs);
-
+    
     setIndexNumber(i);
+    console.log("bs: ", Name, companyName);
+    
   }
   function handleEditValue() {
     const temp = [...dataItem];
@@ -131,7 +134,7 @@ function App() {
       phone: phone,
       website: website,
       company: {
-        companyName: companyName,
+        name: name,
         catchPhrase: catchPhrase,
         bs: bs,
       },
@@ -150,7 +153,7 @@ function App() {
     setPhone("");
     setWebsite("");
     setCompanyName("");
-    setCatchPhrasw("");
+    setCatchPhrase("");
     setBs("");
     setIndexNumber(null);
     console.log(dataItem);
@@ -193,7 +196,7 @@ function App() {
           setPhone={setPhone}
           setWebsite={setWebsite}
           setCompanyName={setCompanyName}
-          setCatchPhrasw={setCatchPhrasw}
+          setCatchPhrase={setCatchPhrase}
           setBs={setBs}
           handleAdd={handleAdd}
         />
