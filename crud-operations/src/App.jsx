@@ -108,6 +108,8 @@ function App() {
     setCompanyName(companyName);
     setCompanyCatch(companyCatch);
     setCompanyBs(Bs);
+    console.log('companyBs: ', companyBs);
+    
     setIndexNumber(i);
   }
   function handleEditValue() {
