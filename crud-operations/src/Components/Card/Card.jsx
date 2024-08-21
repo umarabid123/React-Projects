@@ -20,7 +20,7 @@ const Card = ({item, handleDelete,handleEdit,i}) => {
         <p className='text-xl py-2'><strong className='text-green-600 px-2'>Company catch Phrase:</strong>{item.company.catchPhrase}</p>
         <p className='text-xl py-2'><strong className='text-green-600 px-2'>Comapny BS:</strong>{item.company.bs}</p>
         <button className='bg-red-700 text-white font-semibold text-xl py-2 px-4 rounded-lg mx-2' onClick={() => handleDelete(item.id)}>Delete</button>
-        <button className='bg-sky-700 text-white font-semibold text-xl py-2 px-4 rounded-lg' onClick={() => handleEdit(i,item.id, item.name, item.username, item.email, item.address.street, item.address.suite, item.address.city, item.address.zipcode, item.address.geo.lat, item.address.geo.lng, item.phone, item.website, item.company.name, item.company.catchPhrase, item.company.bs)}>Edit</button>
+        <button className='bg-sky-700 text-white font-semibold text-xl py-2 px-4 rounded-lg' onClick={() => handleEdit(i,item)}>Edit</button>
 
       </div>
     </div>
