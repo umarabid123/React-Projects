@@ -35,10 +35,12 @@ const Input = ({
   setBs,
   handleAdd,
 }) => {
+  console.log(indexNumber);
+  
   return (
     <div>
       <div className="flex flex-col items-center">
-        <form  className="flex gap-4 items-center justify-between flex-wrap m-4" onSubmit={() => handleAdd()}>
+        <form  className="flex gap-4 items-center justify-between flex-wrap m-4" onSubmit={indexNumber !== null? (e) => handleEditValue(e) :(e) => handleAdd(e)}>
         <label  className="w-full md:w-[50%] xl:w-[30%]">
           Id:
         <input
@@ -195,12 +197,15 @@ const Input = ({
           <button
             className="bg-sky-700 text-white font-semibold text-xl py-2 px-4 rounded-lg mx-2"
             type="submit"
-          >
+            >
             {/* onClick={indexNumber !== null ? handleEditValue : handleAdd} */}
             {indexNumber !== null ? "Update" : "Add Card"}
           </button>
         </form>
-        <button className="w-[98%] mx-auto bg-sky-400 p-4 text-center text-white font-bold rounded-lg hover:underline hover:bg-sky-500 transition-all duration-500 ease-linear">Show Table</button>
+        <a href="#table" >
+
+        <button  className="w-[98%] mx-auto bg-sky-400 p-4 text-center text-white font-bold rounded-lg hover:underline hover:bg-sky-500 transition-all duration-500 ease-linear">Show Table</button>
+        </a>
       </div>
     </div>
   );
