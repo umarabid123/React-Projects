@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Card from "./Components/Card/Card";
 import Input from "./Components/Inputs/Input";
-import PopUp from "./Components/PopUp/PopUp";
 
 function App() {
   const [dataItem, setDataItem] = useState([
@@ -217,7 +215,7 @@ function App() {
   return (
     <>
       <div className="app">
-        <h1 className="text-sky-600 text-6xl text-center m-2">
+        <h1 className="text-sky-600 text-4xl font-semibold md:text-3xl lg:text-6xl text-center m-2">
           CRUD Operations
         </h1>
         <Input
@@ -256,7 +254,7 @@ function App() {
           handleAdd={handleAdd}
         />
         <div className=" p-4">
-          <table className="table-autow-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 w-full max-w-[100%]">
+          <table className="table-autow-full hidden xl:block text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 w-full max-w-[100%]">
             <thead className="text-xs text-gray-700 uppercase dark:text-gray-400 border">
               <tr className="flex gap-2 items-center w-full text-center max-w-[100%] hover:bg-gray-100 pt-4 px-2">
                 <td className="text-lg h-12  w-[15%] font-bold text-sky-500">

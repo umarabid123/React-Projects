@@ -37,120 +37,152 @@ const Input = ({
 }) => {
   return (
     <div>
-      <div>
-        <form  className="flex justify-between items-center flex-wrap m-4" onSubmit={() => handleAdd()}>
-          <input
+      <div className="flex flex-col items-center">
+        <form  className="flex gap-4 items-center justify-between flex-wrap m-4" onSubmit={() => handleAdd()}>
+        <label  className="w-full md:w-[50%] xl:w-[30%]">
+          Id:
+        <input
             type="text"
             value={id}
-            className="w-[19%] p-2 border my-2"
+            className=" p-2 border rounded-md w-full my-2"
             placeholder="Enter your Id"
             onChange={(e) => setId(e.target.value)}
             required
           />
-          <input
+        </label>
+          
+          <label className="w-full md:w-[50%] xl:w-[30%]">
+            Name:
+            <input
             type="text"
             value={name}
-            className="w-[19%] p-2 border my-2"
+            className=" p-2 border rounded-md w-full my-2"
             placeholder="Enter your Name"
             onChange={(e) => setName(e.target.value)}
             required
-          />
-          <input
+          /></label>
+          
+          <label className="w-full md:w-[50%] xl:w-[30%]">
+            UserName:
+            <input
             type="text"
             value={username}
-            className="w-[19%] p-2 border my-2"
+            className=" p-2 border rounded-md w-full my-2"
             placeholder="Enter your UserName"
             onChange={(e) => setUserName(e.target.value)}
             required
-          />
-          <input
+          /></label>
+          
+          <label className="w-full md:w-[50%] xl:w-[30%]">
+            Email:
+            <input
             type="text"
             value={email}
-            className="w-[19%] p-2 border my-2"
+            className=" p-2 border rounded-md w-full my-2"
             placeholder="Enter your Email"
             onChange={(e) => setEmail(e.target.value)}
             required
-          />
-          <input
+          /></label>
+          
+          <label className="w-full md:w-[50%] xl:w-[30%]">Street<input
             type="text"
             value={street}
             onChange={(e) => setStreet(e.target.value)}
             required
-            className="w-[19%] p-2 border my-2"
+            className=" p-2 border rounded-md w-full my-2"
             placeholder="Enter your Street"
-          />
-          <input
+          /></label>
+          
+          <label className="w-full md:w-[50%] xl:w-[30%]">Suite<input
             type="text"
             value={suite}
             onChange={(e) => setsuite(e.target.value)}
             required
-            className="w-[19%] p-2 border my-2"
+            className=" p-2 border rounded-md w-full my-2"
             placeholder="Enter your Suite"
-          />
-          <input
+          /></label>
+          
+          <label className="w-full md:w-[50%] xl:w-[30%]">City<input
             type="text"
             value={city}
             onChange={(e) => setCity(e.target.value)}
             required
-            className="w-[19%] p-2 border my-2"
+            className=" p-2 border rounded-md w-full my-2"
             placeholder="Enter your City"
-          />
-          <input
+          /></label>
+          
+          <label className="w-full md:w-[50%] xl:w-[30%]"> Zip Code:<input
             type="text"
             value={zipcode}
             onChange={(e) => setZipCode(e.target.value)}
             required
-            className="w-[19%] p-2 border my-2"
+            className=" p-2 border rounded-md w-full my-2"
             placeholder="Enter your Zip Code"
             on
-          />
-          <input
+          /></label>
+          
+          <label className="w-full md:w-[50%] xl:w-[30%]">
+            LAT:
+            <input
             type="text"
             value={lat}
             onChange={(e) => setLat(e.target.value)}
             required
-            className="w-[19%] p-2 border my-2"
+            className=" p-2 border rounded-md w-full my-2"
             placeholder="Enter your Lat"
-          />
-          <input
+          /></label>
+          
+          <label className="w-full md:w-[50%] xl:w-[30%]"> 
+            LNG:
+            <input
             type="text"
             value={lng}
             onChange={(e) => setLng(e.target.value)}
             required
-            className="w-[19%] p-2 border my-2"
+            className=" p-2 border rounded-md w-full my-2"
             placeholder="Enter your Lng"
-          />
-          <input
+          /></label>
+         
+          <label className="w-full md:w-[50%] xl:w-[30%]"> 
+            Phone Number
+            <input
             type="text"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required
-            className="w-[19%] p-2 border my-2"
+            className=" p-2 border rounded-md w-full my-2"
             placeholder="Enter your Phone"
-          />
-          <input
+          /></label>
+         
+          <label className="w-full md:w-[50%] xl:w-[30%]">
+            Website:
+            <input
             type="text"
             value={website}
             onChange={(e) => setWebsite(e.target.value)}
             required
-            className="w-[19%] p-2 border my-2"
+            className=" p-2 border rounded-md w-full my-2"
             placeholder="Enter your Website"
-          />
-          <input
+          /></label>
+          
+          <label className="w-full md:w-[50%] xl:w-[30%]">
+            Company Name:
+            <input
             type="text"
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
             required
-            className="w-[19%] p-2 border my-2"
+            className=" p-2 border rounded-md w-full  my-2"
             placeholder="Enter your Company Name"
-          />
-          <input
+          /></label>
+          
+          {/* <input
             type="text"
             value={catchPhrase}
             onChange={(e) => setCatchPhrase(e.target.value)}
             required
             className="w-[19%] p-2 border my-2"
-            placeholder="Enter your Comapny catch Phrase"
+          r Comapny catch Phrase"
           />
           <input
             type="text"
@@ -159,7 +191,7 @@ const Input = ({
             required
             className="w-[19%] p-2 border my-2"
             placeholder="Enter your Bs"
-          />
+          /> */}
           <button
             className="bg-sky-700 text-white font-semibold text-xl py-2 px-4 rounded-lg mx-2"
             type="submit"
@@ -168,6 +200,7 @@ const Input = ({
             {indexNumber !== null ? "Update" : "Add Card"}
           </button>
         </form>
+        <button className="w-[98%] mx-auto bg-sky-400 p-4 text-center text-white font-bold rounded-lg hover:underline hover:bg-sky-500 transition-all duration-500 ease-linear">Show Table</button>
       </div>
     </div>
   );
