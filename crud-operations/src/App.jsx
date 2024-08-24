@@ -1,6 +1,16 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Input from "./Components/Inputs/Input";
+import Home from "./Pages/Home";
+import Table from "./Pages/Table";
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  Route,
+  RouterProvider,
+  Routes,
+} from "react-router-dom";
+
 
 function App() {
   const [dataItem, setDataItem] = useState([
@@ -90,74 +100,33 @@ function App() {
   const [catchPhrase, setCatchPhrase] = useState("");
   const [bs, setBs] = useState("");
   const [indexNumber, setIndexNumber] = useState(null);
-  
-  useEffect(()=>{
-   const num=  localStorage.getItem("name")
-   console.log('num: ', num);
 
-  },[])
+  // useEffect(()=>{
+  //  const num=  localStorage.getItem("name")
+  //  console.log('num: ', num);
+
+  // },[])
 
   // useEffect(() => {
   //   // fetch("https://jsonplaceholder.typicode.com/users")
   //   // .then((res) => res.json())
   //   // .then((data) => setDataItem(data));
   // }, []);
-  console.log("dataItem", dataItem.slice(0, 3));
+  // console.log("dataItem", dataItem.slice(0, 3));
 
   function handleDelete(id) {
+    console.log(id);
+    
     if (id > 0) {
       const temp = dataItem.filter((item, i) => item.id !== id);
       setDataItem(temp);
+      console.log('delete');
+      
     }
   }
-  function handleAdd(e) {
-    // const temp = [...dataItem, obj];
-    e.preventdefault();
-    setDataItem([
-      ...dataItem,
-      {
-        id: id,
-        name: name,
-        username: username,
-        email: email,
-        address: {
-          street: street,
-          suite: suite,
-          city: city,
-          zipcode: zipcode,
-          geo: { lat: lat, lng: lng },
-        },
-        phone: phone,
-        website: website,
-        company: {
-          name: name,
-          catchPhrase: catchPhrase,
-          bs: bs,
-        },
-      },
-    ]);
-
-    // console.log('CompanyName: ', companyName);
-
-    setId("");
-    setName("");
-    setUserName("");
-    setEmail("");
-    setStreet("");
-    setsuite("");
-    setCity("");
-    setZipCode("");
-    setLat("");
-    setLng("");
-    setPhone("");
-    setWebsite("");
-    setCompanyName("");
-    setCatchPhrase("");
-    setBs("");
-  }
-
+  
   function handleEdit(i, item) {
-    console.log('item',item.company);
+    console.log("item", item.company);
 
     setId(item.id);
     setName(item.name);
@@ -176,7 +145,6 @@ function App() {
     // setBs(item.company.bs);
     setIndexNumber(i);
     console.log(i);
-    
 
     // console.log("bs: ", Name, companyName);
   }
@@ -224,14 +192,11 @@ function App() {
     setIndexNumber(null);
     console.log(dataItem);
   }
-
-  return (
-    <>
-      <div className="app">
-        <h1 className="text-sky-600 text-4xl font-semibold md:text-3xl lg:text-6xl text-center m-2">
-          CRUD Operations
-        </h1>
-        <Input
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <Home
           id={id}
           name={name}
           username={username}
@@ -264,116 +229,23 @@ function App() {
           setCompanyName={setCompanyName}
           setCatchPhrase={setCatchPhrase}
           setBs={setBs}
-          handleAdd={handleAdd}
+          setDataItem ={setDataItem}
+          // handleAdd={handleAdd}
+          dataItem ={dataItem}
         />
-        <div id="table" className=" p-4">
-          <table className="table-autow-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 w-full max-w-[100%]">
-            <thead className="text-xs text-gray-700 uppercase dark:text-gray-400 border">
-              <tr className="flex gap-2 items-center w-full text-center max-w-[100%] hover:bg-gray-100 pt-4 px-2">
-                <td className="text-lg h-12  w-[15%] font-bold text-sky-500">
-                  Id:Name
-                </td>
-                <td className="text-lg h-12 w-[20%] font-bold text-sky-500">
-                  UserName:Email
-                </td>
-                <td className="text-lg h-12 w-[22%] font-bold text-sky-500">
-                  Street:Suite
-                </td>
-                <td className="text-lg h-12 w-[23%] font-bold text-sky-500">
-                  City:Zip Code
-                </td>
-                <td className="text-lg h-12 w-[18%] font-bold text-sky-500">
-                  Lat:Lng
-                </td>
-                <td className="text-lg h-12 font-bold text-sky-500 w-[25%]">
-                  Phone:Website
-                </td>
-                <td className="text-lg h-12 font-bold text-sky-500 w-[25%]">
-                  Company Name
-                </td>
-                <td className="text-lg h-12 font-bold text-sky-500 w-[20%]">
-                  Actions
-                </td>
-                {/* <td className="text-lg h-12 font-bold text-sky-500">
-                  Lat:Lng
-                  </td> */}
-              </tr>
-            </thead>
-            <tbody className="border">
-              {dataItem.map((item, i) => {
-                return (
-                  <tr
-                    key={i}
-                    className="flex gap-2 justify-between items-center text-center border-b relative hover:text-sky-500 hover:bg-slate-100 p-2"
-                  >
-                    <td className="text-[1rem] h-16 py-2 w-[18%]">
-                      {item.id}: <br /> {item.name}
-                    </td>
-                    <td className="text-[1rem] h-16 py-2 w-[20%]">
-                      {item.username}: <br /> {item.email}
-                    </td>
-                    <td className="text-[1rem] h-16 py-2 w-[22%]">
-                      {item.address.street}: <br /> {item.address.suite}
-                    </td>
-                    <td className="text-[1rem] h-16 py-2 w-[23%]">
-                      {item.address.city}: <br /> {item.address.zipcode}
-                    </td>
-                    <td className="text-[1rem] h-16 py-2 w-[18%]">
-                      {item.address.geo.lat}: <br /> {item.address.geo.lng}
-                    </td>
-                    <td className="text-[1rem] h-16 py-2 w-[25%]">
-                      {item.phone}: <br />
-                      {item.website}
-                    </td>
-                    <td className="text-[1rem] h-16 py-2 w-[23%]">
-                      {item.company.name}: <br />
-                    </td>
-                    <td className="text-4xl self-center cursor-pointer h-16 w-[20%]">
-                      <button
-                        className="bg-sky-700 text-white font-semibold text-sm py-2 px-4 rounded-lg"
-                        onClick={() => handleEdit(i,item)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className="bg-red-500 text-white p-2 w-16 rounded-lg transition-all duration-500 text-sm m-2"
-                        onClick={() => handleDelete(item.id)}
-                      >
-                        Delete
-                      </button>
-                    </td>
+      ),
+    },
+    {
+      path: "/table",
+      element: <Table dataItem={dataItem} setDataItem={setDataItem} handleDelete ={handleDelete} handleEdit ={handleEdit} />,
+    },
+  ]);
 
-                    {/* <td className="text-lg h-16">
-                    </td> */}
-                    {/* <td className="text-lg px-2 h-12 w-[20%] text-center">
-                      {item.zipcode}
-                    </td> */}
-
-                    {/* <div className="btn w-[20%] ">
-                    <button className='bg-sky-700 text-white font-semibold text-xl py-2 px-4 rounded-lg' onClick={() => handleEdit(i,item)}>Edit</button>
-                      <button
-                        className="bg-red-500 text-white p-2 w-24 rounded-lg transition-all duration-500 text-xl m-2"
-                        onClick={() => hendleDelete(item.id)}
-                      >
-                        Delete
-                      </button> */}
-                    {/* </div> */}
-                    <hr />
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          {/* {dataItem.map((item, i) => (
-            <Card
-              item={item}
-              key={i}
-              handleDelete={handleDelete}
-              handleEdit={handleEdit}
-              i={i}
-            />
-          ))} */}
-        </div>
+  return (
+    <>
+      <div className="app">
+        <RouterProvider router={router} />
+        
       </div>
     </>
   );

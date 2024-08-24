@@ -5,7 +5,8 @@ import "./App.css";
 import PoitiveExpense from "./Components/Positive-Value/PositiveExpense/PoitiveExpense";
 import NagetiveExpense from "./Components/Positive-Value/Nagetive-value/NagetiveExpense";
 import Input from "./Components/Positive-Value/Input/Input";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   const [addItem, setAddItem] = useState(false);
   const [addItemNag, setAddItemNag] = useState(false);
@@ -19,8 +20,7 @@ function App() {
   const [itemMap, setItemMap] = useState([]);
 
   function handleInput() {
-   if(inputAmount.length > 0 && inputDescription.length > 0){
-    if (inputAmount > 0 ) {
+    if (inputAmount > 0) {
       setAddItem(inputDescription);
       setAddAmount(inputAmount);
       setIncome(+income + +inputAmount);
@@ -31,13 +31,14 @@ function App() {
       setAddAmountNag(inputAmount);
       setCurrentBalance(+currentBalance - -inputAmount);
     }
-   }
+
     setItemMap([
       ...itemMap,
       { amount: +inputAmount, description: inputDescription },
     ]);
     setInputAmount("");
     setInputDescription("");
+    {notify()}
   }
 
   // function handleMapItem() {
@@ -45,19 +46,47 @@ function App() {
   //     setItemMap([...item]);
   //   }
   // }
-function hendleDelete(index){
-  console.log(`index: ${index}`);
-  
-  const temp = itemMap.filter((item,i) => i !== index);
-  setItemMap(temp)
-  console.log('Delete');
-  
-}
+  function hendleDelete(index) {
+    console.log(`index: ${index}`);
+
+    const temp = itemMap.filter((item, i) => i !== index);
+    setItemMap(temp);
+    console.log("Delete");
+  }
+  function notify(){
+    if(inputAmount>0){
+      toast.success('Income Successfully Add!', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        // transition: Bounce,
+        });
+    }
+    else{
+      
+        toast.info('Expense successfully Deducted!', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            // transition: Bounce,
+            });
+    }
+  }
 
   return (
     <>
       <div className="app h-full p-4 sm:w-[60%] xl:w-[30%] mx-auto">
-        <h1 className="text-center text-xl lg:text-2xl font-mono font-bold lg:font-semibold mb-1">
+        <h1 id="top" className="text-center text-xl lg:text-2xl font-mono font-bold lg:font-semibold mb-1">
           Expense Tracker
         </h1>
         <h5 className="text-center font-medium">CURRENT BALANCE</h5>
@@ -83,7 +112,13 @@ function hendleDelete(index){
           </h1>
           <div className="hr border-b-[1px] border-gray-400"></div>
           {itemMap.map((item, index) => (
-            <PoitiveExpense item={item} key={index} inputAmount ={inputAmount} index ={index} hendleDelete ={hendleDelete} />
+            <PoitiveExpense
+              item={item}
+              key={index}
+              inputAmount={inputAmount}
+              index={index}
+              hendleDelete={hendleDelete}
+            />
           ))}
         </div>
         <div className="new-transaction">
@@ -101,7 +136,6 @@ function hendleDelete(index){
               onChange={(e) => setInputDescription(e.target.value)}
               value={inputDescription}
               placeholder=" Detail of Description"
-            
             />
           </div>
 
@@ -113,7 +147,6 @@ function hendleDelete(index){
               className="w-full border-[1px] border-gray-300 p-2 mt-1 rounded-sm outline-black"
               onChange={(e) => setInputAmount(e.target.value)}
               value={inputAmount}
-             
             />
           </div>
 
@@ -122,12 +155,27 @@ function hendleDelete(index){
             placeholder={"Dollar Value of Transaction"}
             type={"number"}
           /> */}
-          <button
-            className="w-full text-white font-semibold p-2 rounded-sm opacity-65 mt-3 text-center text-xl bg-blue-500"
+         <a href="#top">
+         <button
+            className="w-full text-white font-semibold p-2 rounded-sm mt-3 text-center text-xl bg-sky-500 hover:bg-sky-400"
             onClick={handleInput}
           >
             Add Transaction
           </button>
+         </a>
+          <ToastContainer
+            // position="top-right"
+            // autoClose={2000}
+            // hideProgressBar={false}
+            // newestOnTop={false}
+            // closeOnClick
+            // rtl={false}
+            // pauseOnFocusLoss
+            // draggable
+            // pauseOnHover
+            // theme="light"
+            // transition: Bounce,
+          />
         </div>
       </div>
     </>

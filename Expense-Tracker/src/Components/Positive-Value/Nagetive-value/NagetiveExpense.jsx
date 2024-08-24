@@ -14,3 +14,33 @@ function NagetiveExpense({nagAmount, nagTxt}) {
 }
 
 export default NagetiveExpense
+
+function notify(){
+  if(inputAmount>0){
+    toast.success('Income Successfully Add!', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      });
+  }
+  else{
+    
+      toast.success('Expense successfully Deducted From Income!', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
+  }
+}
