@@ -101,11 +101,10 @@ const Table = ({ handleDelete, handleEdit, dataItem, setDataItem }) => {
         console.log("delete");
       }
       // {callback()}
-      {
-        notify();
-      }
     }
+   
   }
+  
   return (
     <div id="table" className=" p-4">
       <h1 className="text-4xl font-bold text-sky-500 text-center py-4">
@@ -179,7 +178,7 @@ const Table = ({ handleDelete, handleEdit, dataItem, setDataItem }) => {
 
                   <button
                     className="bg-red-500 text-white p-2 w-16 rounded-lg transition-all duration-500 text-sm m-2"
-                    onClick={() => handleDelete(item.id)}
+                    onClick={() => handleDelete(item.id) }
                   >
                     Delete
                   </button>
@@ -211,12 +210,12 @@ const Table = ({ handleDelete, handleEdit, dataItem, setDataItem }) => {
         {" "}
         {/* <Link to="/"> */}
         <ToastContainer />
-        <button
+        <Link to='/'><button
           className="w-[30%] my-3 mx-auto bg-sky-400 p-4 text-center text-white font-bold rounded-lg hover:underline hover:bg-sky-600 transition-all duration-500 ease-linear"
           onClick={notify}
         >
           Add Record
-        </button>
+        </button></Link>
         {/* </Link> */}
       </center>
       <Outlet />

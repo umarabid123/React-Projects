@@ -212,7 +212,7 @@ function App() {
           companyName={companyName}
           catchPhrase={catchPhrase}
           bs={bs}
-          handleEditValue={handleEditValue}
+          // handleEditValue={handleEditValue}
           indexNumber={indexNumber}
           setId={setId}
           setName={setName}
@@ -232,12 +232,14 @@ function App() {
           setDataItem ={setDataItem}
           // handleAdd={handleAdd}
           dataItem ={dataItem}
+          setIndexNumber ={setIndexNumber}
+          handleEditValue={handleEditValue}
         />
       ),
     },
     {
       path: "/table",
-      element: <Table dataItem={dataItem} setDataItem={setDataItem} handleDelete ={handleDelete} handleEdit ={handleEdit} />,
+      element: <Table dataItem={dataItem} setDataItem={setDataItem} handleDelete ={handleDelete} handleEdit ={handleEdit} indexNumber ={indexNumber} />,
     },
   ]);
 

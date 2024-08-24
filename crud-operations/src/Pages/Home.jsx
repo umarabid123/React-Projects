@@ -44,7 +44,7 @@ const Home = ({
   return (
     <div>
         <h1 className="text-sky-600 text-4xl font-semibold md:text-3xl lg:text-6xl text-center m-2">
-          CRUD Operations
+          CRUD App
         </h1>
         <Input
           id={id}
