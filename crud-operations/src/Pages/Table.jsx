@@ -211,10 +211,10 @@ const Table = ({ handleDelete, handleEdit, dataItem, setDataItem }) => {
         {/* <Link to="/"> */}
         <ToastContainer />
         <Link to='/'><button
-          className="w-[30%] my-3 mx-auto bg-sky-400 p-4 text-center text-white font-bold rounded-lg hover:underline hover:bg-sky-600 transition-all duration-500 ease-linear"
+          className="w-[30%] my-3 mx-auto bg-sky-400 p-4 text-center text-white font-bold rounded-lg hover:underline hover:bg-white hover:text-sky-500 border hover:border-sky-500 transition-all duration-500 ease-linear"
           onClick={notify}
         >
-          Add Record
+          Add New Record
         </button></Link>
         {/* </Link> */}
       </center>

@@ -309,7 +309,7 @@ const Input = ({
           /> */}
           <div className="btn flex gap-4">
             <button
-              className="bg-sky-700 w-36 text-white font-semibold text-xl py-2 px-4 rounded-lg mx-2"
+              className="bg-sky-700 w-36 text-white font-semibold text-xl py-2 px-4 rounded-lg mx-2 hover:bg-white hover:text-sky-700 border hover:border-sky-700 hover:underline transition-all duration-500 ease-linear"
               type="submit"
             >
               {/* onClick={indexNumber !== null ? handleEditValue : handleAdd} */}
@@ -321,7 +321,7 @@ const Input = ({
               ""
             ) : (
               <Link to="/table">
-                <button className="w-40 mx-auto bg-sky-400 p-4 text-center text-white font-bold rounded-lg hover:underline hover:bg-sky-500 transition-all duration-500 ease-linear">
+                <button className="w-40 mx-auto bg-sky-400 p-4 text-center text-white font-bold rounded-lg hover:underline hover:bg-white hover:text-sky-500 border hover:border-sky-500 duration-500">
                   Show Table
                 </button>
               </Link>
