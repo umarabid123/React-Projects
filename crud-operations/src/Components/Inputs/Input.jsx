@@ -306,7 +306,7 @@ const Input = ({
             required
             className="w-[19%] p-2 border outline-sky-500 my-2"
             placeholder="Enter your Bs"
-          /> */
+          /> */}
           <div className="btn flex gap-4">
             <button
               className="bg-sky-700 w-36 text-white font-semibold text-xl py-2 px-4 rounded-lg mx-2 hover:bg-white hover:text-sky-700 border hover:border-sky-700 hover:underline transition-all duration-500 ease-linear"
