@@ -3,63 +3,43 @@ import { Link } from "react-router-dom";
 import { ToastContainer, Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Input = ({
+const StudentInput = ({
   id,
   name,
-  username,
+  age,
   email,
-  street,
-  suite,
+  address,
   city,
   zipcode,
-  lat,
-  lng,
   phone,
-  website,
-  companyName,
-  catchPhrase,
-  bs,
-  // handleEditValue,
+  course,
   indexNumber,
   setId,
   setName,
-  setUserName,
+  setAge,
   setEmail,
-  setStreet,
-  setsuite,
+  setAddress,
   setCity,
   setZipCode,
-  setLat,
-  setLng,
   setPhone,
-  setWebsite,
-  setCompanyName,
-  setCatchPhrase,
-  setBs,
-  // handleAdd,
+  setCourse,
   dataItem,
   setDataItem,
   handleEditValue,
-  // indexNumber
 }) => {
-  console.log(indexNumber);
-
   const notify = () => {
-    if(indexNumber !== null){
-      toast.success("Record successfully Update!", {
+    if (indexNumber !== null) {
+      toast.success("Record successfully Updated!", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        progress: undefined,
         transition: Zoom,
         theme: "light",
-        // transition: Zoom
       });
-    }
-    else{
+    } else {
       toast.success("Record successfully Added!", {
         position: "top-right",
         autoClose: 2000,
@@ -67,68 +47,42 @@ const Input = ({
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        progress: undefined,
         transition: Zoom,
         theme: "light",
-        // transition: Zoom
       });
     }
   };
-  const notify2 = () => {
-   
-  };
-  function handleAdd(e) {
-    // const temp = [...dataItem, obj];
 
+  function handleAdd(e) {
     e.preventDefault();
     setDataItem([
       ...dataItem,
       {
-        id: id,
-        name: name,
-        username: username,
-        email: email,
-        address: {
-          street: street,
-          suite: suite,
-          city: city,
-          zipcode: zipcode,
-          geo: { lat: lat, lng: lng },
-        },
-        phone: phone,
-        website: website,
-        company: {
-          name: companyName,
-          catchPhrase: catchPhrase,
-          bs: bs,
-        },
+        id,
+        name,
+        age,
+        email,
+        address,
+        city,
+        zipcode,
+        phone,
+        course,
       },
     ]);
+    notify();
+    resetFields();
+  }
 
-    // console.log
-    {
-      notify();
-    }
-
+  function resetFields() {
     setId("");
     setName("");
-    setUserName("");
+    setAge("");
     setEmail("");
-    setStreet("");
-    setsuite("");
+    setAddress("");
     setCity("");
     setZipCode("");
-    setLat("");
-    setLng("");
     setPhone("");
-    setWebsite("");
-    setCompanyName("");
-    setCatchPhrase("");
-    setBs("");
-  }
-  function handleToast(callback) {
-    notify(indexNumber)
-    callback();
+    setCourse("");
   }
 
   return (
@@ -138,17 +92,21 @@ const Input = ({
           className="flex gap-4 items-center justify-between flex-wrap m-4"
           onSubmit={
             indexNumber !== null
-              ? (e) => handleToast(handleEditValue(e))
+              ? (e) => {
+                  e.preventDefault();
+                  handleEditValue(e);
+                  notify();
+                }
               : (e) => handleAdd(e)
           }
         >
           <label className="w-full md:w-[48%]">
-            Id <span className="text-sky-500">*</span>
+            Student ID <span className="text-sky-500">*</span>
             <input
               type="text"
               value={id}
-              className=" p-2 border outline-sky-500 rounded-md w-full my-2"
-              placeholder="Enter your Id"
+              className="p-2 border outline-sky-500 rounded-md w-full my-2"
+              placeholder="Enter Student ID"
               onChange={(e) => setId(e.target.value)}
               required
             />
@@ -159,21 +117,21 @@ const Input = ({
             <input
               type="text"
               value={name}
-              className=" p-2 border outline-sky-500 rounded-md w-full my-2"
-              placeholder="Enter your Name"
+              className="p-2 border outline-sky-500 rounded-md w-full my-2"
+              placeholder="Enter Student Name"
               onChange={(e) => setName(e.target.value)}
               required
             />
           </label>
 
           <label className="w-full md:w-[48%]">
-            UserName <span className="text-sky-500">*</span>
+            Age <span className="text-sky-500">*</span>
             <input
-              type="text"
-              value={username}
-              className=" p-2 border outline-sky-500 rounded-md w-full my-2"
-              placeholder="Enter your UserName"
-              onChange={(e) => setUserName(e.target.value)}
+              type="number"
+              value={age}
+              className="p-2 border outline-sky-500 rounded-md w-full my-2"
+              placeholder="Enter Student Age"
+              onChange={(e) => setAge(e.target.value)}
               required
             />
           </label>
@@ -181,32 +139,26 @@ const Input = ({
           <label className="w-full md:w-[48%]">
             Email <span className="text-sky-500">*</span>
             <input
-              type="text"
+              type="email"
               value={email}
-              className=" p-2 border outline-sky-500 rounded-md w-full my-2"
-              placeholder="Enter your Email"
+              className="p-2 border outline-sky-500 rounded-md w-full my-2"
+              placeholder="Enter Student Email"
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </label>
-          {/*           
-          <label className="w-full md:w-[50%] xl:w-[30%]">Street<input
-            type="text"
-            value={street}
-            onChange={(e) => setStreet(e.target.value)}
-            required
-            className=" p-2 border outline-sky-500 rounded-md w-full my-2"
-            placeholder="Enter your Street"
-          /></label>
-          
-          <label className="w-full md:w-[50%] xl:w-[30%]">Suite<input
-            type="text"
-            value={suite}
-            onChange={(e) => setsuite(e.target.value)}
-            required
-            className=" p-2 border outline-sky-500 rounded-md w-full my-2"
-            placeholder="Enter your Suite"
-          /></label> */}
+
+          <label className="w-full md:w-[48%]">
+            Address <span className="text-sky-500">*</span>
+            <input
+              type="text"
+              value={address}
+              className="p-2 border outline-sky-500 rounded-md w-full my-2"
+              placeholder="Enter Address"
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+          </label>
 
           <label className="w-full md:w-[48%]">
             City <span className="text-sky-500">*</span>
@@ -215,46 +167,22 @@ const Input = ({
               value={city}
               onChange={(e) => setCity(e.target.value)}
               required
-              className=" p-2 border outline-sky-500 rounded-md w-full my-2"
-              placeholder="Enter your City"
+              className="p-2 border outline-sky-500 rounded-md w-full my-2"
+              placeholder="Enter City"
             />
           </label>
 
           <label className="w-full md:w-[48%]">
-            {" "}
             Zip Code <span className="text-sky-500">*</span>
             <input
               type="text"
               value={zipcode}
               onChange={(e) => setZipCode(e.target.value)}
               required
-              className=" p-2 border outline-sky-500 rounded-md w-full my-2"
-              placeholder="Enter your Zip Code"
-              on
+              className="p-2 border outline-sky-500 rounded-md w-full my-2"
+              placeholder="Enter Zip Code"
             />
           </label>
-
-          {/* <label className="w-full md:w-[50%] xl:w-[30%]">
-            LAT:
-            <input
-            type="text"
-            value={lat}
-            onChange={(e) => setLat(e.target.value)}
-            required
-            className=" p-2 border outline-sky-500 rounded-md w-full my-2"
-            placeholder="Enter your Lat"
-          /></label>
-          
-          <label className="w-full md:w-[50%] xl:w-[30%]"> 
-            LNG:
-            <input
-            type="text"
-            value={lng}
-            onChange={(e) => setLng(e.target.value)}
-            required
-            className=" p-2 border outline-sky-500 rounded-md w-full my-2"
-            placeholder="Enter your Lng"
-          /></label> */}
 
           <label className="w-full md:w-[48%]">
             Phone Number <span className="text-sky-500">*</span>
@@ -263,66 +191,35 @@ const Input = ({
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               required
-              className=" p-2 border outline-sky-500 rounded-md w-full my-2"
-              placeholder="Enter your Phone"
+              className="p-2 border outline-sky-500 rounded-md w-full my-2"
+              placeholder="Enter Phone Number"
             />
           </label>
-
-          {/* <label className="w-full md:w-[50%] xl:w-[30%]">
-            Website:
-            <input
-            type="text"
-            value={website}
-            onChange={(e) => setWebsite(e.target.value)}
-            required
-            className=" p-2 border outline-sky-500 rounded-md w-full my-2"
-            placeholder="Enter your Website"
-          /></label> */}
 
           <label className="w-full md:w-[48%]">
-            Company Name <span className="text-sky-500">*</span>
+            Course <span className="text-sky-500">*</span>
             <input
               type="text"
-              value={companyName}
-              onChange={(e) => setCompanyName(e.target.value)}
+              value={course}
+              onChange={(e) => setCourse(e.target.value)}
               required
-              className=" p-2 border outline-sky-500 rounded-md w-full  my-2"
-              placeholder="Enter your Company Name"
+              className="p-2 border outline-sky-500 rounded-md w-full my-2"
+              placeholder="Enter Course"
             />
           </label>
 
-          {/* <input
-            type="text"
-            value={catchPhrase}
-            onChange={(e) => setCatchPhrase(e.target.value)}
-            required
-            className="w-[19%] p-2 border outline-sky-500 my-2"
-          r Comapny catch Phrase"
-          />
-          <input
-            type="text"
-            value={bs}
-            onChange={(e) => setBs(e.target.value)}
-            required
-            className="w-[19%] p-2 border outline-sky-500 my-2"
-            placeholder="Enter your Bs"
-          /> */
           <div className="btn flex gap-4">
             <button
-              className="bg-sky-700 w-36 text-white font-semibold text-xl py-2 px-4 rounded-lg mx-2 hover:bg-white hover:text-sky-700 border hover:border-sky-700 hover:underline transition-all duration-500 ease-linear"
+              className="bg-sky-700 w-40 text-white font-semibold text-xl py-2 px-4 rounded-lg mx-2 hover:bg-white hover:text-sky-700 border hover:border-sky-700 hover:underline transition-all duration-500 ease-linear"
               type="submit"
             >
-              {/* onClick={indexNumber !== null ? handleEditValue : handleAdd} */}
-              {indexNumber !== null ? "Update" : "Add Card"}
+              {indexNumber !== null ? "Update" : "Add Student"}
             </button>
             <ToastContainer />
-
-            {indexNumber !== null ? (
-              ""
-            ) : (
+            {indexNumber === null && (
               <Link to="/table">
                 <button className="w-40 mx-auto bg-sky-400 p-4 text-center text-white font-bold rounded-lg hover:underline hover:bg-white hover:text-sky-500 border hover:border-sky-500 duration-500">
-                  Show Table
+                  Show Students
                 </button>
               </Link>
             )}
@@ -333,4 +230,5 @@ const Input = ({
   );
 };
 
-export default Input;
+export default StudentInput;
+
